@@ -210,7 +210,7 @@ var Pagination = function() {
 		return config;
 	}
 	
-	var isset = function() {
+	var isset = function(chk) {
 		if( typeof chk !== undefined && typeof chk !== null ) {
 			return true;
 		} else {
