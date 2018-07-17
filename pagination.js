@@ -1,36 +1,40 @@
+/**
+ * @author jonghun Yoon(https://github.com/ok0)
+ * @
+ */
 var Pagination = function() {
 	var config = {
-			"outerElement" : "div"
-			, "outerClass" : "outerClass"
-			
-			, "parentElement" : "ul"
-			, "parentClass" : "parentClass"
-			
-			, "buttonElement" : "li"
-			, "buttonClass" : "buttonClass"
-			
-			, "prevButtonElement" : "li"
-			, "prevButtonClass" : "prevButtonClass"
-			, "prevButtonText" : "&lt;"
-			
-			, "nextButtonElement" : "li"
-			, "nextButtonClass" : "nextButtonClass"
-			, "nextButtonText" : "&gt;"
+		"outerElement" : "div"
+		, "outerClass" : "outerClass"
 		
-			, "firstButtonElement" : "li"
-			, "firstButtonClass" : "firstButtonClass"
-			, "firstButtonText" : "&lt;&lt;"
-			
-			, "lastButtonElement" : "li"
-			, "lastButtonClass" : "lastButtonClass"
-			, "lastButtonText" : "&gt;&gt;"
-			
-			, "currentButtonClass" : "currentButtonClass"
-			
-			, "perPage" : 40
-			, "totalCount" : null
-			, "currentCount" : 0
-			, "pageBlockSize" : 10
+		, "parentElement" : "ul"
+		, "parentClass" : "parentClass"
+		
+		, "buttonElement" : "li"
+		, "buttonClass" : "buttonClass"
+		
+		, "prevButtonElement" : "li"
+		, "prevButtonClass" : "prevButtonClass"
+		, "prevButtonText" : "&lt;"
+		
+		, "nextButtonElement" : "li"
+		, "nextButtonClass" : "nextButtonClass"
+		, "nextButtonText" : "&gt;"
+	
+		, "firstButtonElement" : "li"
+		, "firstButtonClass" : "firstButtonClass"
+		, "firstButtonText" : "&lt;&lt;"
+		
+		, "lastButtonElement" : "li"
+		, "lastButtonClass" : "lastButtonClass"
+		, "lastButtonText" : "&gt;&gt;"
+		
+		, "currentButtonClass" : "currentButtonClass"
+		
+		, "perPage" : 40
+		, "totalCount" : null
+		, "currentCount" : 0
+		, "pageBlockSize" : 10
 	};
 	
 	var lastPageNumber = null;
@@ -54,8 +58,6 @@ var Pagination = function() {
 		
 		if( lastPageNumber > 1 ) {
 			if( lastPageNumber > config["pageBlockSize"] ) {
-				console.log("currentPageNumber : " + currentPageNumber);
-				console.log("lastPageNumber : " + lastPageNumber);
 				if( currentPageNumber < config["pageBlockSize"] ) {
 					// 페이지 초반
 					result = getMiddleButton(1, (config["pageBlockSize"]-1));
@@ -73,7 +75,6 @@ var Pagination = function() {
 				} else {
 					// 나머지
 					var dvBlockSize = Math.floor(config["pageBlockSize"] / 2);
-					console.log("dvBlockSize : " +dvBlockSize);
 					var blockStart = currentPageNumber - dvBlockSize;
 					if( blockStart < 2 ) {
 						var blockStart = 2;
