@@ -18,10 +18,10 @@
 				// 단, 파라미터로 받은 3개는 꼭 입력해줘야 함.
 				var pConfig = {
 					"outerElement" : "div"
-					, "outerClass" : "outerClass"
+					, "outerElementClass" : "outerClass"
 					
 					, "parentElement" : "ul"
-					, "parentClass" : "parentClass"
+					, "parentElementClass" : "parentClass"
 					
 					, "buttonElement" : "li"
 					, "buttonClass" : "buttonClass"
@@ -50,6 +50,8 @@
 					, "pageBlockSize" : 10
 				};
 				var p = new Pagination();
+				
+				// param2 : 페이지 넘버를 클릭했을 경우, 호출 될 함수 이름 작성.
 				p.init(pConfig, "blar");
 				
 				document.getElementById("pArea").innerHTML = p.get();

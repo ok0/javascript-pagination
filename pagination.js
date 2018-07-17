@@ -5,10 +5,10 @@
 var Pagination = function() {
 	var config = {
 		"outerElement" : "div"
-		, "outerClass" : "outerClass"
+		, "outerElementClass" : "outerClass"
 		
 		, "parentElement" : "ul"
-		, "parentClass" : "parentClass"
+		, "parentElementClass" : "parentClass"
 		
 		, "buttonElement" : "li"
 		, "buttonClass" : "buttonClass"
@@ -98,11 +98,26 @@ var Pagination = function() {
 			}
 		}
 		
-		return "<"+config["outerElement"]+">"
-			+ "<"+config["parentElement"]+">"
-			+ result
+		var paginationText = "";
+		paginationText = "<"+config["outerElement"];
+		if( isset(config["outerElementClass"]) ) {
+			paginationText += " class='"+config["outerElementClass"]+"'>";
+		} else {
+			paginationText += ">";
+		}
+		
+		paginationText += "<"+config["parentElement"];
+		if( isset(config["parentElementClass"]) ) {
+			paginationText += " class='"+config["parentElementClass"]+"'>";
+		} else {
+			paginationText += ">";
+		}
+		
+		paginationText += result;
 			+ "</"+config["parentElement"]+">"
 			+ "</"+config["outerElement"]+">";
+		
+		return paginationText;
 	}
 	
 	var getSideButton = function(buttonKey) {
