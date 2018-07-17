@@ -12,7 +12,7 @@
 	<body>
 		<div id="pArea"></div>
 		<script type="text/javascript">
-			function blar(perPage, totalCount, currentCount) {
+			function blar(totalCount, perPage, currentCount) {
 				// 이미 작성되어있는 값은 default 값임
 				// 안적어도 저걸로 지정 됨.
 				// 단, 파라미터로 받은 3개는 꼭 입력해줘야 함.
@@ -47,7 +47,7 @@
 					, "perPage" : perPage // 페이지당 노출 갯수
 					, "totalCount" : totalCount // 전체 컨텐츠 수
 					, "currentCount" : currentCount // 현재 load된 컨텐츠 단위( 1페이지 = 0, 2페이지 = perPage * 1, 3페이지 = perPage * 2)
-					, "pageBlockSize" : 10
+					, "pageBlockSize" : 10 // 한번에 노출되는 넘버 길이.
 				};
 				var p = new Pagination();
 				
@@ -57,7 +57,7 @@
 				document.getElementById("pArea").innerHTML = p.get();
 			}
 			
-			blar(30, 3000, 270);
+			blar(3000, 30, 2910);
 		</script>
 	</body>
 </html>

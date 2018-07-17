@@ -52,47 +52,55 @@ var Pagination = function() {
 		setPageNumber();
 	}
 	
-	// next에는 click 이후 실행 될 function object.
+	// next에는 click 이후 실행 될 function name.
 	this.get = function(next) {
 		var result = "";
+		var front = "";
+		var post = "";
+		var middle = "";
+		var startNumber = null;
+		var endNumber = null;
 		
 		if( lastPageNumber > 1 ) {
 			if( lastPageNumber > config["pageBlockSize"] ) {
-				if( currentPageNumber < config["pageBlockSize"] ) {
-					// 페이지 초반
-					result = getMiddleButton(1, (config["pageBlockSize"]-1));
-					result =
-						result
-						+ getSideButton("next")
-						+ getSideButton("last");
-				} else if( currentPageNumber > (lastPageNumber - config["pageBlockSize"]) ) {
-					// 마지막 페이지.
-					result = getMiddleButton((lastPageNumber-config["pageBlockSize"]+1), lastPageNumber);
-					result =
-						getSideButton("first")
-						+ getSideButton("prev")
-						+ result;
-				} else {
-					// 나머지
-					var dvBlockSize = Math.floor(config["pageBlockSize"] / 2);
-					var blockStart = currentPageNumber - dvBlockSize;
-					if( blockStart < 2 ) {
-						var blockStart = 2;
-					}
-					
-					var blockEnd = currentPageNumber + dvBlockSize;
-					if( blockEnd > lastPageNumber ) {
-						blockEnd = lastPageNumber;
-					}
-					
-					result = getMiddleButton(blockStart, blockEnd);
-					result =
-						getSideButton("first")
-						+ getSideButton("prev")
-						+ result
-						+ getSideButton("next")
-						+ getSideButton("last");
+				var dvBlockSize = Math.ceil(config["pageBlockSize"] / 2);
+				var dvBlockSize2 = Math.ceil(dvBlockSize / 2 );
+				//console.log("dvBlockSize : " + dvBlockSize);
+				//console.log("dvBlockSize2 : " + dvBlockSize2);
+				//console.log("currentPageNumber : " + currentPageNumber);
+				//console.log("lastPageNumber : " + lastPageNumber);
+				
+				startNumber = currentPageNumber - dvBlockSize;
+				endNumber = currentPageNumber + dvBlockSize;
+				var extraNumber = -1;
+				if( startNumber < 1 ) {
+					extraNumber = (startNumber * -1);
+					startNumber = 1;
 				}
+				
+				var extraNumber2 = 0;
+				if( endNumber > lastPageNumber ) {
+					extraNumber2 = endNumber - lastPageNumber - 1;
+					endNumber = lastPageNumber;
+				} else {
+					endNumber += extraNumber;
+				}
+
+				startNumber -= extraNumber2;
+
+				//console.log("startNumber : " + startNumber);
+				//console.log("endNumber : " + endNumber);
+				if( startNumber != 1 ) {
+					front = getSideButton("first")
+						+ getSideButton("prev");
+				}
+
+				if( endNumber != lastPageNumber ) {
+					post = getSideButton("last")
+						+ getSideButton("next");
+				}
+				middle = getMiddleButton(startNumber, endNumber);
+				result = front + middle + post;
 			} else {
 				result += getMiddleButton(1, lastPageNumber);
 			}
@@ -141,7 +149,7 @@ var Pagination = function() {
 		
 		return "<"+config[buttonKey+"ButtonElement"]
 			+ getInnerClass(buttonKey)
-			+ " onClick='"+next+"("+config["perPage"]+", "+config["totalCount"]+", "+purposeCount+")'"+">"
+			+ " onClick='"+next+"("+config["totalCount"]+", "+config["perPage"]+", "+purposeCount+")'"+">"
 			+ config[buttonKey+"ButtonText"]
 			+ "</"+config[buttonKey+"ButtonElement"]+">";
 	}
@@ -167,7 +175,7 @@ var Pagination = function() {
 				result += middleButtonClass;
 			}
 			
-			result += " onClick='"+next+"("+config["perPage"]+", "+config["totalCount"]+", "+((start-1) * config["perPage"])+")'"+">"
+			result += " onClick='"+next+"("+config["totalCount"]+", "+config["perPage"]+", "+((start-1) * config["perPage"])+")'"+">"
 				+ start
 				+ "</"+config["buttonElement"]+">";
 		}
