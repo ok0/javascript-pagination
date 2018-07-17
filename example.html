@@ -13,9 +13,6 @@
 		<div id="pArea"></div>
 		<script type="text/javascript">
 			function blar(totalCount, perPage, currentCount) {
-				// 이미 작성되어있는 값은 default 값임
-				// 안적어도 저걸로 지정 됨.
-				// 단, 파라미터로 받은 3개는 꼭 입력해줘야 함.
 				var pConfig = {
 					"outerElement" : "div"
 					, "outerElementClass" : "outerClass"
@@ -44,14 +41,14 @@
 					
 					, "currentButtonClass" : "currentButtonClass"
 					
-					, "perPage" : perPage // 페이지당 노출 갯수
-					, "totalCount" : totalCount // 전체 컨텐츠 수
-					, "currentCount" : currentCount // 현재 load된 컨텐츠 단위( 1페이지 = 0, 2페이지 = perPage * 1, 3페이지 = perPage * 2)
-					, "pageBlockSize" : 10 // 한번에 노출되는 넘버 길이.
+					, "perPage" : perPage // object count per page.
+					, "totalCount" : totalCount // counting numbers of object.
+					, "currentCount" : currentCount // ( pgae 1 = 0, page 2 = perPage * 1, page 3 = perPage * 2)
+					, "pageBlockSize" : 10 // button length.
 				};
 				var p = new Pagination();
 				
-				// param2 : 페이지 넘버를 클릭했을 경우, 호출 될 함수 이름 작성.
+				// param 2 : this is function name that will be called.
 				p.init(pConfig, "blar");
 				
 				document.getElementById("pArea").innerHTML = p.get();

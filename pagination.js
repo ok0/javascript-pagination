@@ -1,6 +1,5 @@
 /**
  * @author jonghun Yoon(https://github.com/ok0)
- * @
  */
 var Pagination = function() {
 	var config = {
@@ -52,7 +51,7 @@ var Pagination = function() {
 		setPageNumber();
 	}
 	
-	// next에는 click 이후 실행 될 function name.
+	// this is function name that will be called.
 	this.get = function(next) {
 		var result = "";
 		var front = "";
