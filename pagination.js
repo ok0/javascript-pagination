@@ -1,5 +1,5 @@
 /**
- * @author jonghun Yoon(https://github.com/ok0)
+ * @author jonghun Yoon(https://github.com/ok0/javascript-pagination)
  */
 var Pagination = function() {
 	var config = {
