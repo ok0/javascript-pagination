@@ -40,7 +40,7 @@ var Pagination = function() {
 	var currentPageNumber = null;
 	var next = null;
 	
-	this.init = function(paramConfig, nextEvent) {
+	var init = function(paramConfig, nextEvent) {
 		Object.keys(paramConfig).map(function(key) {
 			if( typeof config[key] !== undefined ) {
 				config[key] = paramConfig[key];
@@ -63,9 +63,7 @@ var Pagination = function() {
 		if( lastPageNumber > 1 ) {
 			if( lastPageNumber > config["pageBlockSize"] ) {
 				var dvBlockSize = Math.ceil(config["pageBlockSize"] / 2);
-				var dvBlockSize2 = Math.ceil(dvBlockSize / 2 );
 				//console.log("dvBlockSize : " + dvBlockSize);
-				//console.log("dvBlockSize2 : " + dvBlockSize2);
 				//console.log("currentPageNumber : " + currentPageNumber);
 				//console.log("lastPageNumber : " + lastPageNumber);
 				
