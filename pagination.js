@@ -40,7 +40,7 @@ var Pagination = function() {
 	var currentPageNumber = null;
 	var next = null;
 	
-	var init = function(paramConfig, nextEvent) {
+	this.init = function(paramConfig, nextEvent) {
 		Object.keys(paramConfig).map(function(key) {
 			if( typeof config[key] !== undefined ) {
 				config[key] = paramConfig[key];
