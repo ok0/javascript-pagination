@@ -34,9 +34,9 @@ function blar(totalCount, perPage, currentCount) {
 		, "currentButtonClass" : "currentButtonClass"
 		
 		, "perPage" : perPage // object count per page.
-		, "totalCount" : totalCount // counting numbers of object.
+		, "totalCount" : totalCount
 		, "currentCount" : currentCount // ( pgae 1 = 0, page 2 = perPage * 1, page 3 = perPage * 2)
-		, "pageBlockSize" : 10 // button length.
+		, "pageBlockSize" : 10 // button length. ( 5 = 1 2 3 4 5, 10 = 1 2 3 4 5 ... 10 )
 	};
 	var p = new Pagination();
 	
