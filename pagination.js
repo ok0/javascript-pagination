@@ -95,8 +95,8 @@ var Pagination = function() {
 				}
 
 				if( endNumber != lastPageNumber ) {
-					post = getSideButton("last")
-						+ getSideButton("next");
+					post = getSideButton("next")
+						+ getSideButton("last");
 				}
 				middle = getMiddleButton(startNumber, endNumber);
 				result = front + middle + post;
