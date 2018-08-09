@@ -1,5 +1,5 @@
 ###### https://github.com/ok0/javascript-pagination
-# javascript simple pagaination.
+# javascript simple pagination.
 
 <pre>
 <code>
